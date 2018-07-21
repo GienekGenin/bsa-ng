@@ -1,14 +1,26 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ContentComponent} from './content/content.component';
-import {ForgetPassComponent} from './forget-pass/forget-pass.component';
+import {ForgotPassComponent} from './forget-pass/forgot-pass.component';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {NewPassComponent} from './forget-pass/new-pass/new-pass.component';
+import {CaptchaComponent} from './forget-pass/captcha/captcha.component';
 
 
 const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'content', component: ContentComponent},
-  {path: 'forget-pass', component: ForgetPassComponent},
+  {
+    path: 'forget-pass',
+    component: ForgotPassComponent,
+    children: [{
+      path: '', component: CaptchaComponent
+    },
+      {path: 'new-pass', component: NewPassComponent}]
+  },
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent}
 ];

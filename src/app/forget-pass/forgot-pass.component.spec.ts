@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForgetPassComponent } from './forget-pass.component';
+import { ForgotPassComponent } from './forgot-pass.component';
 
-describe('ForgetPassComponent', () => {
-  let component: ForgetPassComponent;
-  let fixture: ComponentFixture<ForgetPassComponent>;
+describe('ForgotPassComponent', () => {
+  let component: ForgotPassComponent;
+  let fixture: ComponentFixture<ForgotPassComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgetPassComponent ]
+      declarations: [ ForgotPassComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForgetPassComponent);
+    fixture = TestBed.createComponent(ForgotPassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

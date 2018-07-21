@@ -1,18 +1,12 @@
 <form action="#">
-  <div class="captcha" *ngIf=!hideElements>
-    <img src="../../assets/captcha.gif" alt="captcha">
-    <mat-form-field class="field-full-width">
-      <input matInput placeholder="Enter captcha text" required (keyup)="checkCaptcha($event)">
-    </mat-form-field>
-  </div>
-  <mat-form-field class="field-full-width" *ngIf=hideElements>
+  <mat-form-field class="field-full-width">
     <input matInput placeholder="Enter your email" [formControl]="email" required>
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
-  <mat-form-field class="field-full-width" hintLabel="Min 3 characters" *ngIf=hideElements>
+  <mat-form-field class="field-full-width" hintLabel="Min 3 characters">
     <input matInput #password minlength="3" placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'" required>
     <mat-hint align="end">{{password.value?.length || 0}}/3</mat-hint>
     <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
-  <button mat-button *ngIf=hideElements>Submit</button>
+  <button mat-button>Submit</button>
 </form>

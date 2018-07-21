@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {LoginComponent} from './login/login.component';
-import {ForgetPassComponent} from './forget-pass/forget-pass.component';
+import {ForgotPassComponent} from './forget-pass/forgot-pass.component';
 import {ContentComponent} from './content/content.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
@@ -13,14 +13,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {DatePickerService} from './services/date-picker.service';
 import {RecaptchaModule} from 'ng-recaptcha';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewPassComponent } from './forget-pass/new-pass/new-pass.component';
+import { CaptchaComponent } from './forget-pass/captcha/captcha.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    ForgetPassComponent,
-    ContentComponent
+    ForgotPassComponent,
+    ContentComponent,
+    DashboardComponent,
+    NewPassComponent,
+    CaptchaComponent
   ],
   imports: [
     BrowserModule,
