@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {NewPassGuard} from '../../guards/new-pass-guard/new-pass.guard';
 
 @Component({
   selector: 'app-captcha',
@@ -8,11 +9,12 @@ import {Router} from '@angular/router';
 })
 export class CaptchaComponent implements OnInit {
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public newPassGuard: NewPassGuard) {
   }
 
   checkCaptcha(event) {
     if (event.target.value === `don't type`) {
+      this.newPassGuard.state = true;
       this.router.navigate(['forget-pass/new-pass']);
     }
   }

@@ -7,6 +7,7 @@ import {RegistrationComponent} from './registration/registration.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {NewPassComponent} from './forget-pass/new-pass/new-pass.component';
 import {CaptchaComponent} from './forget-pass/captcha/captcha.component';
+import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 
 
 const routes: Routes = [
@@ -16,10 +17,9 @@ const routes: Routes = [
   {
     path: 'forget-pass',
     component: ForgotPassComponent,
-    children: [{
-      path: '', component: CaptchaComponent
-    },
-      {path: 'new-pass', component: NewPassComponent}]
+    children: [
+      {path: '', component: CaptchaComponent},
+      {path: 'new-pass', component: NewPassComponent, canActivate: [NewPassGuard]}]
   },
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent}
