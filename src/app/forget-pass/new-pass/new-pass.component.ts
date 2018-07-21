@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {FormValidationService} from '../../services/validation/form-validation.service';
 
 @Component({
   selector: 'app-child-forget-pass',
@@ -7,15 +8,13 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./new-pass.component.scss']
 })
 export class NewPassComponent implements OnInit {
-
-  constructor() { }
+  email: FormControl;
+  getErrorMessage: Function;
   hidePass = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+  constructor(public formValidation: FormValidationService) {
+    this.email = this.formValidation.email;
+    this.getErrorMessage = this.formValidation.getErrorMessage;
   }
   ngOnInit() {
   }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {DatePickerService} from '../services/date-picker.service';
+import {DatePickerService} from '../services/date-picker-service/date-picker.service';
+import {FormValidationService} from '../services/validation/form-validation.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -11,20 +12,14 @@ export class RegistrationComponent implements OnInit {
 
   minDate: Date;
   maxDate: Date;
-
-  constructor(public datePickerService: DatePickerService) {
-    this.minDate = this.datePickerService.minDate;
-    this.maxDate = this.datePickerService.maxDate;
-  }
-
+  email: FormControl;
+  getErrorMessage: Function;
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+  constructor(public datePicker: DatePickerService, public formValidation: FormValidationService) {
+    this.minDate = this.datePicker.minDate;
+    this.maxDate = this.datePicker.maxDate;
+    this.email = this.formValidation.email;
+    this.getErrorMessage = this.formValidation.getErrorMessage;
   }
 
   ngOnInit() {

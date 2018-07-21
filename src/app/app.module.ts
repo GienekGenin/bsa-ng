@@ -11,11 +11,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {DatePickerService} from './services/date-picker.service';
+import {DatePickerService} from './services/date-picker-service/date-picker.service';
 import {RecaptchaModule} from 'ng-recaptcha';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewPassComponent } from './forget-pass/new-pass/new-pass.component';
 import { CaptchaComponent } from './forget-pass/captcha/captcha.component';
+import {FormValidationService} from './services/validation/form-validation.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { CaptchaComponent } from './forget-pass/captcha/captcha.component';
     ReactiveFormsModule,
     RecaptchaModule.forRoot()
   ],
-  providers: [DatePickerService],
+  providers: [DatePickerService, FormValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
