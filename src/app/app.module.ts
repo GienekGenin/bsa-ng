@@ -12,6 +12,7 @@ import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {DatePickerService} from './services/date-picker.service';
+import {RecaptchaModule} from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {DatePickerService} from './services/date-picker.service';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule.forRoot()
   ],
   providers: [DatePickerService],
   bootstrap: [AppComponent]

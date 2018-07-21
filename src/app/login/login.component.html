@@ -4,8 +4,8 @@
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field class="field-full-width">
-    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" required>
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <input matInput placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'" required>
+    <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
   <button mat-button>Submit</button>
 </form>
