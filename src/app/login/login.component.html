@@ -1,11 +1,14 @@
-<mat-form-field>
-  <input matInput placeholder="Enter your email" [formControl]="email" required>
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
-<mat-form-field>
-  <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" required>
-  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-</mat-form-field>
+<form action="#">
+  <mat-form-field class="field-full-width">
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="field-full-width">
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+  <button mat-button>Submit</button>
+</form>
 <mat-list role="list">
   <mat-list-item role="listitem"><a href="/forget-pass">Forget password</a></mat-list-item>
   <mat-list-item role="listitem"><a href="/registration">Registration</a></mat-list-item>
