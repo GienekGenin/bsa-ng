@@ -20,6 +20,7 @@ import {FormValidationService} from './services/validation/form-validation.servi
 import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 import {UserService} from './services/user-service/user.service';
 import {FormsGuard} from './guards/forms/forms.guard';
+import {DashboardGuard} from './guards/dashboard/dashboard.guard';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import {FormsGuard} from './guards/forms/forms.guard';
     ReactiveFormsModule,
     RecaptchaModule.forRoot()
   ],
-  providers: [DatePickerService, FormValidationService, NewPassGuard, UserService, FormsGuard],
+  providers: [DatePickerService, FormValidationService, NewPassGuard, UserService, FormsGuard, DashboardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

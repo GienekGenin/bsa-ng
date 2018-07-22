@@ -37,7 +37,7 @@ export class RegistrationComponent implements RegistrationComponentInterface {
   }
 
   userData(name, surname, email, date, password) {
-    const user = {name, surname, email, date, password};
+    const user = {name, surname, email, date, password, id: null};
     this.userService.pushUserToLocalStorage(user);
     this.dashboardGuard.state = true;
     this.router.navigate(['dashboard']);

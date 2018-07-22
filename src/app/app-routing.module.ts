@@ -11,9 +11,8 @@ import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 import {DashboardGuard} from './guards/dashboard/dashboard.guard';
 import {FormsGuard} from './guards/forms/forms.guard';
 
-
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [DashboardGuard]},
   {path: 'content', component: ContentComponent},
   {

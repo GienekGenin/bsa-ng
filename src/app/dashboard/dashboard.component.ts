@@ -1,5 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormsGuard} from '../guards/forms/forms.guard';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+
+export interface UserData {
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  date: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -7,12 +15,30 @@ import {FormsGuard} from '../guards/forms/forms.guard';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'date'];
+  dataSource: MatTableDataSource<UserData>;
 
-  constructor(public formsGuard: FormsGuard) {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor() {
+    const users = JSON.parse(localStorage.getItem('users'));
+
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource(users);
   }
 
   ngOnInit() {
-    this.formsGuard.state = false;
+    console.log(JSON.parse(localStorage.getItem('users')));
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

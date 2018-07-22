@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.dashboardGuard.state);
   }
 
   login(email, password) {
