@@ -8,11 +8,12 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {NewPassComponent} from './forget-pass/new-pass/new-pass.component';
 import {CaptchaComponent} from './forget-pass/captcha/captcha.component';
 import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
+import {DashboardGuard} from './guards/dashboard/dashboard.guard';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [DashboardGuard]},
   {path: 'content', component: ContentComponent},
   {
     path: 'forget-pass',

@@ -7,10 +7,8 @@ import {Observable} from 'rxjs';
 })
 export class NewPassGuard implements CanActivate {
   state = false;
-
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    console.log(route, state);
     return this.state;
   }
 }

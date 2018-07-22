@@ -18,6 +18,7 @@ import { NewPassComponent } from './forget-pass/new-pass/new-pass.component';
 import { CaptchaComponent } from './forget-pass/captcha/captcha.component';
 import {FormValidationService} from './services/validation/form-validation.service';
 import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
+import {UserService} from './services/user-service/user.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
     ReactiveFormsModule,
     RecaptchaModule.forRoot()
   ],
-  providers: [DatePickerService, FormValidationService, NewPassGuard],
+  providers: [DatePickerService, FormValidationService, NewPassGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
