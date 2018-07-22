@@ -4,6 +4,7 @@ import {FormValidationService} from '../services/validation/form-validation.serv
 import {UserService} from '../services/user-service/user.service';
 import {Router} from '@angular/router';
 import {DashboardGuard} from '../guards/dashboard/dashboard.guard';
+import {FormsGuard} from '../guards/forms/forms.guard';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,14 @@ export class LoginComponent implements OnInit {
   getErrorMessage: Function;
   hidePass = true;
 
-  constructor(public formValidation: FormValidationService, public userService: UserService, public loggedInGuard: DashboardGuard,
+  constructor(public formValidation: FormValidationService, public userService: UserService, public dashboardGuard: DashboardGuard,
               public router: Router) {
     this.email = this.formValidation.email;
     this.getErrorMessage = this.formValidation.getErrorMessage;
   }
 
   ngOnInit() {
+    console.log(this.dashboardGuard.state);
   }
 
   login(email, password) {
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && password === users[i].password) {
         this.userService.setUserLoggedIn(users[i]);
-        this.loggedInGuard.state = true;
+        this.dashboardGuard.state = true;
         this.router.navigate(['dashboard']);
         return;
       }

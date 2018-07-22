@@ -9,6 +9,7 @@ import {NewPassComponent} from './forget-pass/new-pass/new-pass.component';
 import {CaptchaComponent} from './forget-pass/captcha/captcha.component';
 import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 import {DashboardGuard} from './guards/dashboard/dashboard.guard';
+import {FormsGuard} from './guards/forms/forms.guard';
 
 
 const routes: Routes = [
@@ -18,12 +19,13 @@ const routes: Routes = [
   {
     path: 'forget-pass',
     component: ForgotPassComponent,
+    canActivate: [FormsGuard],
     children: [
       {path: '', component: CaptchaComponent},
-      {path: 'new-pass', component: NewPassComponent, canActivate: [NewPassGuard]}]
+      {path: 'new-pass', component: NewPassComponent, canActivate: [NewPassGuard]}],
   },
-  {path: 'login', component: LoginComponent},
-  {path: 'registration', component: RegistrationComponent}
+  {path: 'login', component: LoginComponent, canActivate: [FormsGuard]},
+  {path: 'registration', component: RegistrationComponent, canActivate: [FormsGuard]}
 ];
 
 @NgModule({

@@ -28,7 +28,7 @@ export class RegistrationComponent implements RegistrationComponentInterface {
   hidePass = true;
 
   constructor(public datePicker: DatePickerService, public formValidation: FormValidationService,
-              public userService: UserService, public loggedInGuard: DashboardGuard,
+              public userService: UserService, public dashboardGuard: DashboardGuard,
               public router: Router) {
     this.minDate = this.datePicker.minDate;
     this.maxDate = this.datePicker.maxDate;
@@ -39,7 +39,7 @@ export class RegistrationComponent implements RegistrationComponentInterface {
   userData(name, surname, email, date, password) {
     const user = {name, surname, email, date, password};
     this.userService.pushUserToLocalStorage(user);
-    this.loggedInGuard.state = true;
+    this.dashboardGuard.state = true;
     this.router.navigate(['dashboard']);
   }
 }
