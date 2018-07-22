@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 
 interface UserServiceInterface {
   user: {
+    id: number,
     name: string,
     surname: string,
     date: string,
@@ -27,6 +28,7 @@ export class UserService implements UserServiceInterface {
 
   private isUserLoggedIn;
   public user: {
+    id: number,
     name: string,
     surname: string,
     date: string,
@@ -49,7 +51,6 @@ export class UserService implements UserServiceInterface {
       _users.push(user);
       localStorage.setItem('users', JSON.stringify(_users));
     }
-    console.log(JSON.parse(localStorage.getItem('users')));
     this.setUserLoggedIn(user);
   }
 
@@ -59,7 +60,7 @@ export class UserService implements UserServiceInterface {
   }
 
   getUserLoggedIn() {
-    return this.isUserLoggedIn;
+    return this.user;
   }
 
   logOut() {

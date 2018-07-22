@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(public formValidation: FormValidationService, public userService: UserService, public dashboardGuard: DashboardGuard,
               public router: Router) {
     this.email = this.formValidation.email;
-    this.getErrorMessage = this.formValidation.getErrorMessage;
+    this.getErrorMessage = this.formValidation.getEmailErrorMessage;
   }
 
   ngOnInit() {
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && password === users[i].password) {
         this.userService.setUserLoggedIn(users[i]);
+        localStorage.setItem('last_user', JSON.stringify(users[i]));
         this.dashboardGuard.state = true;
         this.router.navigate(['dashboard']);
         return;

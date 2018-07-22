@@ -14,7 +14,7 @@ export class NewPassComponent implements OnInit {
 
   constructor(public formValidation: FormValidationService) {
     this.email = this.formValidation.email;
-    this.getErrorMessage = this.formValidation.getErrorMessage;
+    this.getErrorMessage = this.formValidation.getEmailErrorMessage;
   }
   ngOnInit() {
   }

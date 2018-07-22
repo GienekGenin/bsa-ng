@@ -33,7 +33,7 @@ export class RegistrationComponent implements RegistrationComponentInterface {
     this.minDate = this.datePicker.minDate;
     this.maxDate = this.datePicker.maxDate;
     this.email = this.formValidation.email;
-    this.getErrorMessage = this.formValidation.getErrorMessage;
+    this.getErrorMessage = this.formValidation.getEmailErrorMessage;
   }
 
   userData(name, surname, email, date, password) {
