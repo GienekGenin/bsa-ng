@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Encode+Sans+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 @mixin form-fields {
   form {
     min-width: 150px;
@@ -8,4 +11,16 @@
   .field-full-width {
     width: 100%;
   }
+}
+
+a, li, span, button, td {
+  font-family: 'Encode Sans Condensed', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, .mat-card-title, .mat-card-subtitle, .mat-tab-label-content, .mat-sort-header-button {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+td, th{
+  font-size: 16px !important;
 }

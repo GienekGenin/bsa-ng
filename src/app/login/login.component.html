@@ -15,8 +15,8 @@
   <mat-card-actions>
     <button mat-stroked-button (click)="login(email.value, pass.value)" *ngIf="!email.invalid && pass.value">Submit</button>
     <mat-list role="list">
-      <mat-list-item role="listitem"><a routerLink="/forget-pass">Forget password</a></mat-list-item>
-      <mat-list-item role="listitem"><a routerLink="/registration">Registration</a></mat-list-item>
+      <mat-list-item role="listitem"><a routerLink="/forget-pass"><button mat-stroked-button>Forget password</button></a></mat-list-item>
+      <mat-list-item role="listitem"><a routerLink="/registration"><button mat-stroked-button>Registration</button></a></mat-list-item>
     </mat-list>
   </mat-card-actions>
 </mat-card>
