@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {UserService} from '../services/user-service/user.service';
 import {FormControl} from '@angular/forms';
 import {FormValidationService} from '../services/validation/form-validation.service';
+import {Router} from '@angular/router';
 
 export interface UserData {
   id: string;
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public userService: UserService, public formValidation: FormValidationService) {
+  constructor(public userService: UserService, public formValidation: FormValidationService, public router: Router) {
     // из-а того что ведут себя как будто связаны по ссылке
     this.text_field = formValidation.text_field;
     this.text_field1 = formValidation._text_field;
@@ -70,5 +71,15 @@ export class DashboardComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  logout() {
+    const guard = {
+      'dashboard': false,
+      'forms': true,
+      'new-pass': false
+    };
+    localStorage.setItem('guard', JSON.stringify(guard));
+    this.router.navigate(['login']);
   }
 }

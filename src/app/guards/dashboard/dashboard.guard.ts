@@ -6,10 +6,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DashboardGuard implements CanActivate {
-  state = true;
+  state = false;
 
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (JSON.parse(localStorage.getItem('guard')) !== null) {
+      this.state = JSON.parse(localStorage.getItem('guard')).dashboard;
+    }
     if (this.state === false) {
       this.router.navigate(['login']);
     }

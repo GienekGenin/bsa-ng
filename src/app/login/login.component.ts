@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {FormValidationService} from '../services/validation/form-validation.service';
 import {UserService} from '../services/user-service/user.service';
 import {Router} from '@angular/router';
-import {DashboardGuard} from '../guards/dashboard/dashboard.guard';
-import {FormsGuard} from '../guards/forms/forms.guard';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +14,19 @@ export class LoginComponent implements OnInit {
   getErrorMessage: Function;
   hidePass = true;
 
-  constructor(public formValidation: FormValidationService, public userService: UserService, public dashboardGuard: DashboardGuard,
+  constructor(public formValidation: FormValidationService, public userService: UserService,
               public router: Router) {
     this.email = this.formValidation.email;
     this.getErrorMessage = this.formValidation.getEmailErrorMessage;
   }
 
   ngOnInit() {
+    const guard = {
+      'dashboard': false,
+      'forms': true,
+      'new_pass': false
+    };
+    localStorage.setItem('guard', JSON.stringify(guard));
   }
 
   login(email, password) {
@@ -31,7 +35,12 @@ export class LoginComponent implements OnInit {
       if (users[i].email === email && password === users[i].password) {
         this.userService.setUserLoggedIn(users[i]);
         localStorage.setItem('last_user', JSON.stringify(users[i]));
-        this.dashboardGuard.state = true;
+        const guard = {
+          'dashboard': true,
+          'forms': false,
+          'new_pass': false
+        };
+        localStorage.setItem('guard', JSON.stringify(guard));
         this.router.navigate(['dashboard']);
         return;
       }

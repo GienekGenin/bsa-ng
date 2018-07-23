@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ContentComponent} from './content/content.component';
 import {ForgotPassComponent} from './forget-pass/forgot-pass.component';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
@@ -12,9 +11,8 @@ import {DashboardGuard} from './guards/dashboard/dashboard.guard';
 import {FormsGuard} from './guards/forms/forms.guard';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [DashboardGuard]},
-  {path: 'content', component: ContentComponent},
   {
     path: 'forget-pass',
     component: ForgotPassComponent,

@@ -14,7 +14,12 @@ export class CaptchaComponent implements OnInit {
 
   checkCaptcha(event) {
     if (event.target.value === `don't type`) {
-      this.newPassGuard.state = true;
+      const guard = {
+        'dashboard': false,
+        'forms': true,
+        'new_pass': true
+      };
+      localStorage.setItem('guard', JSON.stringify(guard));
       this.router.navigate(['forget-pass/new-pass']);
     }
   }

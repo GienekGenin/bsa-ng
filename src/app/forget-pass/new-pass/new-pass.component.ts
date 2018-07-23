@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {FormValidationService} from '../../services/validation/form-validation.service';
 import {Router} from '@angular/router';
 
@@ -29,6 +29,12 @@ export class NewPassComponent implements OnInit {
           users[i].password = password;
           localStorage.setItem('users', JSON.stringify(users));
           alert('Password changed');
+          const guard = {
+            'dashboard': false,
+            'forms': true,
+            'new_pass': false
+          };
+          localStorage.setItem('guard', JSON.stringify(guard));
           this.router.navigate(['login']);
         }
       }

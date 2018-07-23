@@ -40,17 +40,17 @@ export class UserService implements UserServiceInterface {
     this.isUserLoggedIn = false;
   }
 
-  pushUserToLocalStorage(user) {
-    if (localStorage.getItem('users') === null) {
-      user.id = 10;
-      users.push(user);
+  setDefaultUsers() {
+    if (JSON.parse(localStorage.getItem('users')) == null) {
       localStorage.setItem('users', JSON.stringify(users));
-    } else {
-      const _users = JSON.parse(localStorage.getItem('users'));
-      user.id = _users[_users.length - 1].id + 1;
-      _users.push(user);
-      localStorage.setItem('users', JSON.stringify(_users));
     }
+  }
+
+  pushUserToLocalStorage(user) {
+    const _users = JSON.parse(localStorage.getItem('users'));
+    user.id = _users[_users.length - 1].id + 1;
+    _users.push(user);
+    localStorage.setItem('users', JSON.stringify(_users));
     this.setUserLoggedIn(user);
   }
 

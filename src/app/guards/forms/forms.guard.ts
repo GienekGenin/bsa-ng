@@ -10,6 +10,9 @@ export class FormsGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (JSON.parse(localStorage.getItem('guard')) !== null) {
+      this.state = JSON.parse(localStorage.getItem('guard')).forms;
+    }
     if (this.state === false) {
       this.router.navigate(['dashboard']);
     }
