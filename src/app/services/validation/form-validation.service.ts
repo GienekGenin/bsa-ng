@@ -14,6 +14,7 @@ export interface FormValidationInterface {
 export class FormValidationService implements FormValidationInterface {
   email = new FormControl('', [Validators.required, Validators.email]);
   text_field = new FormControl('', Validators.required);
+  _text_field = new FormControl('', Validators.required);
 
   getEmailErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :

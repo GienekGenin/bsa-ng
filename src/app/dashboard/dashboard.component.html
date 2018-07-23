@@ -57,7 +57,7 @@
           <mat-form-field *ngIf="edit">
             <input matInput #surname [formControl]="text_field1" placeholder="Enter your surname" required>
             <mat-icon matSuffix>mode_edit</mat-icon>
-            <mat-error *ngIf="text_field1.invalid">{{getErrorMsg1()}}</mat-error>
+            <mat-error *ngIf="text_field1.invalid">{{getErrorMsg()}}</mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -74,7 +74,7 @@
   <mat-card-actions>
     <button mat-button (click)="edit=!edit" *ngIf="!edit">EDIT</button>
     <button mat-button (click)="edit=!edit" *ngIf="edit">CANCEL</button>
-    <button mat-button (click)="saveProfileChanges(name, surname)">SAVE</button>
+    <button mat-button (click)="saveProfileChanges(text_field.value, text_field1.value)">SAVE</button>
   </mat-card-actions>
 </mat-card>
 <mat-form-field>

@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
   text_field: FormControl;
   text_field1: FormControl;
   getErrorMsg: Function;
-  getErrorMsg1: Function;
   displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'date'];
   dataSource: MatTableDataSource<UserData>;
 
@@ -37,10 +36,10 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(public userService: UserService, public formValidation: FormValidationService) {
+    // из-а того что ведут себя как будто связаны по ссылке
     this.text_field = formValidation.text_field;
-    this.text_field1 = formValidation.text_field;
+    this.text_field1 = formValidation._text_field;
     this.getErrorMsg = formValidation.getEmptyFieldErrorMessage;
-    this.getErrorMsg1 = formValidation.getEmptyFieldErrorMessage;
     this.user = userService.getUserLoggedIn();
     const users = JSON.parse(localStorage.getItem('users'));
 
@@ -55,7 +54,14 @@ export class DashboardComponent implements OnInit {
   }
 
   saveProfileChanges(name, surname) {
-
+    if (name && surname) {
+      this.edit = !this.edit;
+      this.user.name = name;
+      this.user.surname = surname;
+      localStorage.setItem('last_user', JSON.stringify(this.user));
+    } else {
+      alert('Provide values or cancel');
+    }
   }
 
   applyFilter(filterValue: string) {
