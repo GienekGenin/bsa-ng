@@ -1,0 +1,17 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title><h3>Timer</h3></mat-card-title>
+    <mat-card-subtitle><h4>Use it wisely</h4></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="field-full-width" style="width: 50px; text-align: right; margin-right: 5px">
+      <input matInput [value]="default_time" #sec type="number">
+    </mat-form-field>
+    <span>s</span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" (click)="timer('start', sec)" *ngIf="!hide">Start</button>
+    <button mat-raised-button color="accent" (click)="timer('stop', sec)" *ngIf="hide">Stop</button>
+    <button mat-raised-button color="accent" (click)="timer('reset', sec)">Reset</button>
+  </mat-card-actions>
+</mat-card>

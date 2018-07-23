@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.card {
+  max-width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.table {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+footer {
+  height: 50px;
+  background-color: whitesmoke;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
