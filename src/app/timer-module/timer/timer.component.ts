@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   default_time = 10;
+  hide = false;
 
   constructor() {
   }
@@ -19,12 +20,15 @@ export class TimerComponent implements OnInit {
 
   timer(command, timeInput) {
     if (command === 'start') {
+      this.hide = true;
       this.myVar = setInterval(function () {
         myTimer(timeInput);
       }, 1000);
     } else if (command === 'stop') {
+      this.hide = false;
       this.myStopFunction();
     } else if (command === 'reset') {
+      this.hide = false;
       this.myStopFunction();
       timeInput.value = this.default_time;
     }
@@ -40,6 +44,6 @@ function myTimer(timeInput) {
   if (time >= 0) {
     timeInput.value = time;
   } else {
-    return;
+    this.myStopFunction();
   }
 }

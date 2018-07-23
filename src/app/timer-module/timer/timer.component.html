@@ -10,8 +10,8 @@
     <span>s</span>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="timer('start', sec)">Start</button>
-    <button mat-button (click)="timer('stop', sec)">Stop</button>
-    <button mat-button (click)="timer('reset', sec)">Reset</button>
+    <button mat-raised-button color="accent" (click)="timer('start', sec)" *ngIf="!hide">Start</button>
+    <button mat-raised-button color="accent" (click)="timer('stop', sec)" *ngIf="hide">Stop</button>
+    <button mat-raised-button color="accent" (click)="timer('reset', sec)">Reset</button>
   </mat-card-actions>
 </mat-card>
