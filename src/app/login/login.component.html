@@ -1,15 +1,22 @@
-<form action="#">
-  <mat-form-field class="field-full-width">
-    <input matInput placeholder="Enter your email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field class="field-full-width">
-    <input matInput #pass placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'" required>
-    <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
-  </mat-form-field>
-  <button mat-button (click)="login(email.value, pass.value)" *ngIf="!email.invalid && pass.value">Submit</button>
-</form>
-<mat-list role="list">
-  <mat-list-item role="listitem"><a href="/forget-pass">Forget password</a></mat-list-item>
-  <mat-list-item role="listitem"><a href="/registration">Registration</a></mat-list-item>
-</mat-list>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title><h1>Login</h1></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="field-full-width">
+      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <input matInput #pass placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="login(email.value, pass.value)" *ngIf="!email.invalid && pass.value">Submit</button>
+    <mat-list role="list">
+      <mat-list-item role="listitem"><a routerLink="/forget-pass">Forget password</a></mat-list-item>
+      <mat-list-item role="listitem"><a routerLink="/registration">Registration</a></mat-list-item>
+    </mat-list>
+  </mat-card-actions>
+</mat-card>
