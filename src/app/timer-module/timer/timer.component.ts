@@ -35,7 +35,6 @@ export class TimerComponent implements OnInit {
 }
 
 function myTimer(timeInput) {
-  console.log('in interval');
   let time = timeInput.value;
   time = time - 1;
   if (time >= 0) {

@@ -21,7 +21,7 @@ import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 import {UserService} from './services/user-service/user.service';
 import {FormsGuard} from './guards/forms/forms.guard';
 import {DashboardGuard} from './guards/dashboard/dashboard.guard';
-import {TimerModule} from './timer/timer.module';
+import {TimerModule} from './timer-module/timer.module';
 
 @NgModule({
   declarations: [
