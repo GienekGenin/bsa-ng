@@ -21,6 +21,7 @@ import {NewPassGuard} from './guards/new-pass-guard/new-pass.guard';
 import {UserService} from './services/user-service/user.service';
 import {FormsGuard} from './guards/forms/forms.guard';
 import {DashboardGuard} from './guards/dashboard/dashboard.guard';
+import {TimerModule} from './timer/timer.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {DashboardGuard} from './guards/dashboard/dashboard.guard';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RecaptchaModule.forRoot()
+    RecaptchaModule.forRoot(),
+    TimerModule
   ],
   providers: [DatePickerService, FormValidationService, NewPassGuard, UserService, FormsGuard, DashboardGuard],
   bootstrap: [AppComponent]
