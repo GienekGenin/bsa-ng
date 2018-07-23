@@ -13,8 +13,8 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button (click)="login(email.value, pass.value)" *ngIf="!email.invalid && pass.value">Submit</button>
     <mat-list role="list">
+      <mat-list-item *ngIf="!email.invalid && pass.value" role="listitem"><button mat-stroked-button color="accent" (click)="login(email.value, pass.value)">Submit</button></mat-list-item>
       <mat-list-item role="listitem"><a routerLink="/forget-pass"><button mat-stroked-button>Forget password</button></a></mat-list-item>
       <mat-list-item role="listitem"><a routerLink="/registration"><button mat-stroked-button>Registration</button></a></mat-list-item>
     </mat-list>
